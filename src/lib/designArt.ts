@@ -263,7 +263,7 @@ function invitation(p: Painter, side: Side) {
   p.frame(u * 6, u * 0.2)
   for (const [x, y] of [[u * 6, u * 6], [W - u * 6, u * 6], [u * 6, H - u * 6], [W - u * 6, H - u * 6]]) p.diamond(x, y, u * 1.4)
   if (side === 'back') {
-    p.monogram(W / 2, H * 0.36, u * 14, 'A&K')
+    p.monogram(W / 2, H * 0.36, u * 14, 'B&G')
     p.text('With love and blessings', W / 2, H * 0.62, { kind: 'body', size: u * 6, color: 'soft', align: 'center' })
     p.text('RSVP · +91 00000 00000', W / 2, H * 0.74, { kind: 'caps', size: u * 3.4, color: 'text', align: 'center', track: 0.8, maxW: W * 0.8 })
     return
@@ -271,13 +271,13 @@ function invitation(p: Painter, side: Side) {
   const cy = land ? 0.06 : 0
   p.text('TOGETHER WITH THEIR FAMILIES', W / 2, H * (0.19 + cy), { kind: 'caps', size: u * 3.2, color: 'text', align: 'center', track: 1, maxW: W * 0.78 })
   if (land) {
-    p.text('Ananya', W * 0.3, H * 0.5, { kind: 'head', size: u * 15, color: 'text', align: 'center', maxW: W * 0.34 })
+    p.text('Bride', W * 0.3, H * 0.5, { kind: 'head', size: u * 15, color: 'text', align: 'center', maxW: W * 0.34 })
     p.text('&', W / 2, H * 0.5, { kind: 'head', size: u * 14, color: 'accent', align: 'center' })
-    p.text('Karthik', W * 0.7, H * 0.5, { kind: 'head', size: u * 15, color: 'text', align: 'center', maxW: W * 0.34 })
+    p.text('Groom', W * 0.7, H * 0.5, { kind: 'head', size: u * 15, color: 'text', align: 'center', maxW: W * 0.34 })
   } else {
-    p.text('Ananya', W / 2, H * 0.35, { kind: 'head', size: u * 17, color: 'text', align: 'center', maxW: W * 0.8 })
+    p.text('Bride', W / 2, H * 0.35, { kind: 'head', size: u * 17, color: 'text', align: 'center', maxW: W * 0.8 })
     p.text('&', W / 2, H * 0.45, { kind: 'head', size: u * 13, color: 'accent', align: 'center' })
-    p.text('Karthik', W / 2, H * 0.56, { kind: 'head', size: u * 17, color: 'text', align: 'center', maxW: W * 0.8 })
+    p.text('Groom', W / 2, H * 0.56, { kind: 'head', size: u * 17, color: 'text', align: 'center', maxW: W * 0.8 })
   }
   p.text('request the pleasure of your company', W / 2, H * (land ? 0.66 : 0.66), { kind: 'body', size: u * 5.6, color: 'soft', align: 'center', maxW: W * 0.8 })
   p.rule(W / 2 - u * 7, H * (land ? 0.72 : 0.71), u * 14)

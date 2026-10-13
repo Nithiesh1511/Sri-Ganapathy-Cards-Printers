@@ -28,9 +28,9 @@ function Invitation() {
       <div className="inv-inner stock-ivory flex flex-col items-center justify-center overflow-hidden text-center">
         <div className="keyline" />
         <span className="text-[1.5cqw] font-bold uppercase tracking-[0.3em] text-gold-text">You are invited</span>
-        <span className="mt-[3cqw] font-playfair text-[6cqw] italic leading-none text-plum">Ananya</span>
+        <span className="mt-[3cqw] font-playfair text-[6cqw] italic leading-none text-plum">Bride</span>
         <span className="foil-gold font-playfair text-[5cqw] italic leading-tight">&amp;</span>
-        <span className="font-playfair text-[6cqw] italic leading-none text-plum">Karthik</span>
+        <span className="font-playfair text-[6cqw] italic leading-none text-plum">Groom</span>
         <span className="mt-[3cqw] h-px w-[10cqw] bg-gold" />
         <span className="mt-[2cqw] font-display text-[2.3cqw] italic text-ink-soft">to celebrate with us</span>
       </div>
@@ -43,7 +43,7 @@ function Invitation() {
           <div className="face face-back stock-ivory" />
         </div>
       ))}
-      <div className="inv-seal flex items-center justify-center font-display text-[4.6cqw] italic text-gold-hi">A&thinsp;K</div>
+      <div className="inv-seal flex items-center justify-center font-display text-[4.6cqw] italic text-gold-hi">B&thinsp;G</div>
     </div>
   )
 }

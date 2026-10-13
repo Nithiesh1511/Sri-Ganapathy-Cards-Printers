@@ -68,15 +68,15 @@ export default function ScrollStory() {
 
                 <div className="story-type absolute inset-x-0 top-[12%] flex flex-col items-center px-[10%] text-center">
                   <span style={{ '--i': 0 } as CSSProperties} className="text-[clamp(7px,1.6vw,10px)] font-bold uppercase tracking-[0.34em] text-gold-hi">Together with their families</span>
-                  <span style={{ '--i': 1 } as CSSProperties} className="mt-[6%] font-playfair text-[clamp(2rem,5.4vw,3.2rem)] italic leading-none text-ivory">Ananya</span>
+                  <span style={{ '--i': 1 } as CSSProperties} className="mt-[6%] font-playfair text-[clamp(2rem,5.4vw,3.2rem)] italic leading-none text-ivory">Bride</span>
                   <span style={{ '--i': 1.5 } as CSSProperties} className="foil-gold my-[2%] font-playfair text-[clamp(1.6rem,4vw,2.4rem)] italic leading-none">&amp;</span>
-                  <span style={{ '--i': 2 } as CSSProperties} className="font-playfair text-[clamp(2rem,5.4vw,3.2rem)] italic leading-none text-ivory">Karthik</span>
+                  <span style={{ '--i': 2 } as CSSProperties} className="font-playfair text-[clamp(2rem,5.4vw,3.2rem)] italic leading-none text-ivory">Groom</span>
                   <span style={{ '--i': 2.6 } as CSSProperties} className="mt-[16%] font-display text-[clamp(0.95rem,2.2vw,1.25rem)] italic text-ink-soft">request the pleasure of your company</span>
                   <span style={{ '--i': 3 } as CSSProperties} className="mt-[3%] h-px w-16 bg-gold" />
                 </div>
 
                 {/* Blind-embossed monogram */}
-                <div className="story-emboss absolute inset-x-0 bottom-[9%] text-center font-display text-[clamp(2.4rem,6vw,3.6rem)] font-semibold italic">A&thinsp;K</div>
+                <div className="story-emboss absolute inset-x-0 bottom-[9%] text-center font-display text-[clamp(2.4rem,6vw,3.6rem)] font-semibold italic">B&thinsp;G</div>
               </div>
             </div>
           </div>

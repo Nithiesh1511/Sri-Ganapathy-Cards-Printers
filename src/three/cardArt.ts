@@ -130,9 +130,9 @@ const PAINTERS: Record<FaceId, (ctx: CanvasRenderingContext2D, mode: Mode) => vo
       spaced(ctx, 'TOGETHER WITH THEIR FAMILIES', ART_W / 2, 140, 7)
       ctx.font = `italic 500 80px ${PLAYFAIR}`
       ctx.textAlign = 'right'
-      ctx.fillText('Ananya', ART_W / 2 - 52, 290)
+      ctx.fillText('Bride', ART_W / 2 - 52, 290)
       ctx.textAlign = 'left'
-      ctx.fillText('Karthik', ART_W / 2 + 52, 290)
+      ctx.fillText('Groom', ART_W / 2 + 52, 290)
       ctx.textAlign = 'center'
       ctx.fillStyle = '#4A4354'
       ctx.font = `italic 500 34px ${SERIF}`

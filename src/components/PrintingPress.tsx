@@ -35,7 +35,7 @@ function Products() {
       node: (
         <div className="stock-blush relative flex aspect-[0.72] w-full flex-col items-center justify-center rounded-[4px] shadow-lift">
           <div className="keyline" />
-          <span className="font-playfair text-xl italic text-plum">A &amp; K</span>
+          <span className="font-playfair text-xl italic text-plum">B &amp; G</span>
           <span className="mt-2 h-px w-8 bg-gold" />
         </div>
       ),
