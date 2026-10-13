@@ -1,0 +1,492 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   SRI GANAPATHY CARDS & PRINTERS — "Maison" edition
+   A luxury treatment of the print shop: gilt hairlines, foil, ivory
+   and ink, slow easing. Four themes share one structure — only the
+   variables below change (and the matching `three` values in
+   src/data/themes.ts, which colour the 3D scenes).
+
+   Colours are "r g b" triplets so Tailwind's /opacity syntax works.
+   ============================================================ */
+
+/* ── Ivory & Gold (default, light) ────────────────────────────────────────── */
+:root,
+:root[data-theme='ivory'] {
+  --paper: 251 247 239;
+  --paper-2: 245 237 222;
+  --paper-3: 233 221 198;
+  --card: 255 253 248;
+  --ink: 27 23 17;
+  --ink-soft: 78 69 56;
+  --ink-mute: 125 114 97;
+  --night: 20 16 11;
+  --accent: 49 36 120;
+  --accent-soft: 196 186 240;
+  --gold: 184 134 43;
+  --gold-hi: 243 217 143;
+  --gold-lo: 128 90 20;
+  --on-gold: 33 22 4;
+  --wine: 122 28 44;
+  --shadow: 44 30 8;
+  /* gold used for text on the page surface (darker, so it reads on ivory) */
+  --gold-text: 128 90 20;
+  /* foil gradient stops for text on the page surface */
+  --foil-1: 122 84 15;
+  --foil-2: 184 134 43;
+  --foil-3: 222 180 88;
+  color-scheme: light;
+}
+
+/* ── Midnight Noir ───────────────────────────────────────────────────────── */
+:root[data-theme='noir'] {
+  --paper: 12 11 15;
+  --paper-2: 20 18 25;
+  --paper-3: 32 29 38;
+  --card: 22 20 28;
+  --ink: 244 238 224;
+  --ink-soft: 205 197 180;
+  --ink-mute: 150 142 128;
+  --night: 6 5 8;
+  --accent: 214 178 96;
+  --accent-soft: 120 100 55;
+  --gold: 214 178 96;
+  --gold-hi: 248 228 166;
+  --gold-lo: 150 112 40;
+  --on-gold: 24 17 4;
+  --wine: 196 92 108;
+  --shadow: 0 0 0;
+  --gold-text: 224 190 108;
+  --foil-1: 170 126 44;
+  --foil-2: 232 200 120;
+  --foil-3: 252 234 176;
+  color-scheme: dark;
+}
+
+/* ── Royal Indigo ────────────────────────────────────────────────────────── */
+:root[data-theme='royal'] {
+  --paper: 17 10 50;
+  --paper-2: 25 15 70;
+  --paper-3: 38 23 98;
+  --card: 28 18 78;
+  --ink: 247 242 232;
+  --ink-soft: 214 207 232;
+  --ink-mute: 160 150 192;
+  --night: 9 5 30;
+  --accent: 190 170 255;
+  --accent-soft: 110 90 190;
+  --gold: 224 188 100;
+  --gold-hi: 250 232 170;
+  --gold-lo: 152 112 36;
+  --on-gold: 28 18 4;
+  --wine: 226 122 152;
+  --shadow: 3 1 20;
+  --gold-text: 232 198 112;
+  --foil-1: 172 128 44;
+  --foil-2: 236 204 124;
+  --foil-3: 253 238 182;
+  color-scheme: dark;
+}
+
+/* ── Rosewood ────────────────────────────────────────────────────────────── */
+:root[data-theme='rosewood'] {
+  --paper: 26 11 16;
+  --paper-2: 38 16 25;
+  --paper-3: 54 25 37;
+  --card: 42 19 30;
+  --ink: 250 240 232;
+  --ink-soft: 226 205 198;
+  --ink-mute: 172 142 136;
+  --night: 15 5 9;
+  --accent: 234 181 158;
+  --accent-soft: 150 92 82;
+  --gold: 226 170 146;
+  --gold-hi: 252 216 198;
+  --gold-lo: 160 98 80;
+  --on-gold: 42 14 10;
+  --wine: 232 112 134;
+  --shadow: 10 2 5;
+  --gold-text: 236 184 162;
+  --foil-1: 176 108 88;
+  --foil-2: 236 184 162;
+  --foil-3: 255 226 210;
+  color-scheme: dark;
+}
+
+:root {
+  /* 1 → 0 as the hero's four plates register; drives the headline's colour ghost. */
+  --reg: 1;
+  --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--gold)) rgb(var(--paper-2));
+  }
+  body {
+    margin: 0;
+    background: rgb(var(--paper));
+    color: rgb(var(--ink));
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    font-variation-settings: 'opsz' 144;
+  }
+  ::selection { background: rgb(var(--gold)); color: rgb(var(--on-gold)); }
+  :focus-visible { outline: 1.5px solid rgb(var(--gold)); outline-offset: 4px; border-radius: 6px; }
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--paper-2)); }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgb(var(--gold-lo)), rgb(var(--gold)), rgb(var(--gold-hi)));
+    border: 2.5px solid rgb(var(--paper-2));
+    border-radius: 999px;
+  }
+}
+
+/* A whisper of paper grain over everything — static, so it costs nothing. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .38 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12; }
+
+  /* Small-caps label: a gilt hairline, then the words. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    font: 700 10.5px/1 'Manrope', system-ui, sans-serif;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: rgb(var(--gold-text));
+  }
+  .eyebrow::before {
+    content: '';
+    width: 2.6rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, currentColor);
+    flex-shrink: 0;
+  }
+  .eyebrow--plain::before { display: none; }
+  @media (max-width: 639px) {
+    .eyebrow { gap: 0.7rem; letter-spacing: 0.22em; }
+    .eyebrow::before { width: 1.6rem; }
+  }
+
+  /* ── Buttons ─────────────────────────────────────────────────────────────
+     Slow, weighted, with a pass of light across on hover. */
+  .btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    min-height: 3.2rem;
+    padding: 0.95rem 2.1rem;
+    border-radius: 999px;
+    font: 700 11px/1 'Manrope', system-ui, sans-serif;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: transform 0.7s var(--ease-lux), box-shadow 0.7s var(--ease-lux), background-color 0.4s, color 0.4s, border-color 0.4s;
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -70%;
+    z-index: -1;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: skewX(-20deg);
+    transition: left 1s var(--ease-lux);
+  }
+  .btn:hover::after { left: 130%; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-gold {
+    color: rgb(var(--on-gold));
+    background: linear-gradient(120deg, rgb(var(--gold-lo)) 0%, rgb(var(--gold-hi)) 38%, rgb(var(--gold)) 64%, rgb(var(--gold-lo)) 100%);
+    background-size: 220% 100%;
+    background-position: 0% 0;
+    box-shadow:
+      0 16px 34px -16px rgb(var(--gold) / 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  }
+  .btn-gold:hover { background-position: 100% 0; box-shadow: 0 22px 40px -16px rgb(var(--gold) / 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(0, 0, 0, 0.2); }
+  .btn-ghost {
+    color: rgb(var(--ink));
+    border: 1px solid rgb(var(--gold) / 0.8);
+    background: transparent;
+  }
+  .btn-ghost:hover { background: rgb(var(--gold) / 0.12); border-color: rgb(var(--gold-hi)); }
+  /* for the always-dark panels */
+  .btn-ivory {
+    color: #1b1711;
+    background: #f8f2e6;
+    box-shadow: 0 14px 30px -16px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+  }
+  .btn-ghost-lt {
+    color: #f8f2e6;
+    border: 1px solid rgba(243, 217, 143, 0.6);
+    background: transparent;
+  }
+  .btn-ghost-lt:hover { background: rgba(243, 217, 143, 0.12); border-color: #f3d98f; }
+
+  /* A framed surface: ivory card, gilt hairline, deep soft shadow. */
+  .panel {
+    position: relative;
+    background: rgb(var(--card));
+    border: 1px solid rgb(var(--gold) / 0.4);
+    border-radius: 1.5rem;
+    box-shadow: 0 40px 80px -48px rgb(var(--shadow) / 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+  .panel::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgb(var(--gold) / 0.2);
+    border-radius: calc(1.5rem - 6px);
+    pointer-events: none;
+  }
+
+  /* Gilt hairline rule with a diamond in the middle. */
+  .orn { display: flex; align-items: center; gap: 1rem; color: rgb(var(--gold)); }
+  .orn::before, .orn::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, currentColor); }
+  .orn::after { background: linear-gradient(270deg, transparent, currentColor); }
+  .orn > i { width: 7px; height: 7px; transform: rotate(45deg); background: currentColor; }
+
+  /* The process-ink bar, kept as a quiet signature. */
+  .cmyk-bar { display: inline-flex; gap: 0; }
+  .cmyk-bar > i { display: block; width: 0.9rem; height: 0.28rem; }
+  .cmyk-bar > i:nth-child(1) { background: #00aeef; }
+  .cmyk-bar > i:nth-child(2) { background: #ec008c; }
+  .cmyk-bar > i:nth-child(3) { background: #ffd400; }
+  .cmyk-bar > i:nth-child(4) { background: #16121e; }
+  :root[data-theme='noir'] .cmyk-bar > i:nth-child(4),
+  :root[data-theme='royal'] .cmyk-bar > i:nth-child(4),
+  :root[data-theme='rosewood'] .cmyk-bar > i:nth-child(4) { background: #f4eee0; }
+
+  /* Halftone — dots of ink in a grid, the way a photo is really printed. */
+  .halftone {
+    background-image: radial-gradient(circle, currentColor 1.2px, transparent 1.6px);
+    background-size: 14px 14px;
+  }
+  .halftone-fade {
+    -webkit-mask-image: linear-gradient(115deg, #000 0%, transparent 70%);
+    mask-image: linear-gradient(115deg, #000 0%, transparent 70%);
+  }
+}
+
+/* ── Gold foil ─────────────────────────────────────────────────────────────
+   Text that catches the light: a gilt gradient that drifts slowly. */
+.foil-text {
+  background-image: linear-gradient(105deg, rgb(var(--foil-1)) 0%, rgb(var(--foil-3)) 30%, rgb(var(--foil-2)) 52%, rgb(var(--foil-3)) 74%, rgb(var(--foil-1)) 100%);
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: foil-shift 11s ease-in-out infinite alternate;
+  padding-right: 0.06em; /* italics overhang the clip box */
+}
+/* The same, always bright — for the dark panels, whatever the theme. */
+.foil-text-lt {
+  background-image: linear-gradient(105deg, #b98a34 0%, #fbe7a6 30%, #e2bb62 52%, #fbe7a6 74%, #b98a34 100%);
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: foil-shift 11s ease-in-out infinite alternate;
+  padding-right: 0.06em;
+}
+@keyframes foil-shift { from { background-position: 0% 0; } to { background-position: 100% 0; } }
+
+/* ── Misregistration ghost ─────────────────────────────────────────────────
+   Two faint coloured echoes of a word, pulled apart by --reg and gone when the
+   plates are in register. */
+.ghost {
+  filter:
+    drop-shadow(calc(var(--reg) * -0.05em) calc(var(--reg) * 0.018em) 0 rgba(0, 174, 239, calc(var(--reg) * 0.6)))
+    drop-shadow(calc(var(--reg) * 0.05em) calc(var(--reg) * -0.018em) 0 rgba(236, 0, 140, calc(var(--reg) * 0.55)));
+}
+
+/* ── Reveal on scroll ─────────────────────────────────────────────────────── */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 1.3s var(--ease-lux), transform 1.5s var(--ease-lux);
+  transition-delay: calc(var(--d, 0) * 110ms);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+/* ── Cursor ring ──────────────────────────────────────────────────────────── */
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 95;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid rgb(var(--gold));
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s, width 0.5s var(--ease-lux), height 0.5s var(--ease-lux), margin 0.5s var(--ease-lux), background-color 0.4s;
+}
+.cursor-ring.is-on { opacity: 0.9; }
+.cursor-ring.is-hot { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgb(var(--gold) / 0.14); }
+.cursor-ring::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgb(var(--gold));
+  transform: translate(-50%, -50%);
+}
+@media (hover: none), (pointer: coarse) { .cursor-ring { display: none; } }
+
+/* ── Scroll ink: a single gilt line across the very top ──────────────────── */
+.scroll-ink {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 70;
+  height: 2px;
+  background: linear-gradient(90deg, rgb(var(--gold-lo)), rgb(var(--gold-hi)), rgb(var(--gold)));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgb(var(--gold) / 0.7);
+}
+
+/* ── Marquee ──────────────────────────────────────────────────────────────── */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+/* ── 3D tilt cards (CSS) ──────────────────────────────────────────────────── */
+.tilt-scene { perspective: 1200px; }
+.tilt {
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.9s var(--ease-lux);
+  will-change: transform;
+}
+.tilt.is-active { transition: transform 0.12s linear; }
+.tilt .z1 { transform: translateZ(24px); }
+.tilt .z2 { transform: translateZ(52px); }
+.tilt .z3 { transform: translateZ(84px); }
+/* a soft glint that follows the pointer across the card */
+.tilt::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(255, 244, 214, 0.38), transparent 46%);
+  opacity: 0;
+  transition: opacity 0.6s;
+  pointer-events: none;
+}
+.tilt.is-active::after { opacity: 1; }
+
+/* ── Flip card (contact) ──────────────────────────────────────────────────── */
+.flip-scene { perspective: 1500px; }
+.flip {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s var(--ease-lux);
+  transform: rotateX(var(--tx, 0deg)) rotateY(calc(var(--flip, 0deg) + var(--ty, 0deg)));
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 1.1rem;
+  overflow: hidden;
+}
+.flip-back { transform: rotateY(180deg); }
+
+/* ── Form: underline fields, gilt on focus ────────────────────────────────── */
+.field {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgb(var(--ink) / 0.3);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.8rem 0;
+  font: 500 16px/1.4 'Manrope', system-ui, sans-serif;
+  color: rgb(var(--ink));
+  outline: none;
+  transition: border-color 0.5s var(--ease-lux), box-shadow 0.5s var(--ease-lux);
+}
+.field::placeholder { color: rgb(var(--ink-mute) / 0.8); }
+.field:focus { border-bottom-color: rgb(var(--gold)); box-shadow: 0 1px 0 0 rgb(var(--gold)); }
+select.field option { background: rgb(var(--paper)); color: rgb(var(--ink)); }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Opening sequence ─────────────────────────────────────────────────────────
+   index.html sets <html data-intro="on"> before first paint on the first visit of a
+   session. Hero plays the registration scene, flips it to "out" as the page opens up
+   (which starts the fade-ins below), and removes it when done. */
+html[data-intro] { overflow: hidden; scrollbar-gutter: stable; }
+html[data-intro='on'] header { opacity: 0; pointer-events: none; }
+html:not([data-intro='on']) header { animation: hero-in 1.2s ease 0.2s both; }
+.hero-copy { animation: hero-rise 1.4s var(--ease-lux) 0.15s both; }
+.hero-fade { animation: hero-in 1.4s ease 0.45s both; }
+html[data-intro='on'] .hero-copy,
+html[data-intro='on'] .hero-fade { animation: none; opacity: 0; pointer-events: none; }
+@keyframes hero-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hero-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+.hero-loader__bar { animation: hero-load 1.4s var(--ease-lux) infinite; }
+@keyframes hero-load { from { transform: translateX(-100%); } to { transform: translateX(200%); } }
+
+/* ── Theme change: reveal the new theme in a circle from the button ─────── */
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .tilt, .flip { transition: none; }
+  .ghost { filter: none; }
+  .foil-text, .foil-text-lt { animation: none; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+}
