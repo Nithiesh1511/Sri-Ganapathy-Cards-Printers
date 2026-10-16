@@ -38,12 +38,12 @@ function Invitation() {
         <div key={side} className={`inv-door inv-door-${side}`}>
           <div className="face stock-blush">
             <div className={`absolute inset-y-[5%] ${side === 'l' ? 'left-[10%] right-0 border-r-0' : 'left-0 right-[10%] border-l-0'} border border-gold/70`} />
-            <div className={`absolute top-1/2 h-[30%] w-[30%] -translate-y-1/2 rounded-full border border-gold/60 ${side === 'l' ? 'right-[-15%]' : 'left-[-15%]'}`} />
+            {/* Half of the wax seal, printed on this door: the two halves meet on the seam when closed */}
+            <div className={`inv-half flex items-center justify-center font-display text-[4.6cqw] italic text-gold-hi ${side === 'l' ? 'right-[-6.65cqw]' : 'left-[-6.65cqw]'}`}>B&thinsp;G</div>
           </div>
           <div className="face face-back stock-ivory" />
         </div>
       ))}
-      <div className="inv-seal flex items-center justify-center font-display text-[4.6cqw] italic text-gold-hi">B&thinsp;G</div>
     </div>
   )
 }

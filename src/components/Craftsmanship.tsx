@@ -92,7 +92,7 @@ export default function Craftsmanship() {
   }, [])
 
   return (
-    <section id="quality" aria-labelledby="quality-title" className="section relative bg-ivory">
+    <section id="quality" aria-labelledby="quality-title" className="section relative bg-ivory !pb-12 sm:!pb-16">
       <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="eyebrow reveal">Craftsmanship</p>

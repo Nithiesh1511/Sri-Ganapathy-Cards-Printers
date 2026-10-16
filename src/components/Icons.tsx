@@ -59,3 +59,15 @@ export const Check = (p: I) => (
 export const Alert = (p: I) => (
   <svg {...base(p)}><circle cx="12" cy="12" r="9" /><path d="M12 7.5v5.5M12 16.4v.1" /></svg>
 )
+export const Clock = (p: I) => (
+  <svg {...base(p)}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3.2 2" /></svg>
+)
+export const Shield = (p: I) => (
+  <svg {...base(p)}><path d="M12 3 5 6v5.5c0 4.4 2.9 7.9 7 9.5 4.1-1.6 7-5.1 7-9.5V6l-7-3Z" /><path d="m9 12 2.2 2.2L15.5 10" /></svg>
+)
+export const Truck = (p: I) => (
+  <svg {...base(p)}><path d="M3 6.5h11V16H3zM14 9.5h4l3 3V16h-7" /><circle cx="7.5" cy="17.5" r="1.8" /><circle cx="17" cy="17.5" r="1.8" /></svg>
+)
+export const Tag = (p: I) => (
+  <svg {...base(p)}><path d="M3 12.5V4h8.5L21 13.5 13.5 21 3 12.5Z" /><circle cx="7.5" cy="8.5" r="1.3" /></svg>
+)

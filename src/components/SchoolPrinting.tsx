@@ -70,7 +70,7 @@ function Composition() {
 
 export default function SchoolPrinting() {
   return (
-    <section id="school" aria-labelledby="school-title" className="section relative overflow-hidden bg-blush/40">
+    <section id="school" aria-labelledby="school-title" className="section relative overflow-hidden bg-blush/40 !pt-14 sm:!pt-20 !pb-12 sm:!pb-16">
       <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_80%_30%,rgb(183_155_224/0.25),transparent_70%)]" aria-hidden />
       <div className="wrap relative grid items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
         <div>

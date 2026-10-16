@@ -44,11 +44,37 @@ export function PinwheelMark({ size = 40, className, spin = false }: { size?: nu
   )
 }
 
+/**
+ * The shop's Ganesha "SG" monogram. The artwork is white on black, so it is used as a
+ * luminance mask and filled with the brand colour (plum on ivory, ivory on purple).
+ */
+export function LogoMark({ light = false, className = '' }: { light?: boolean; className?: string }) {
+  const url = `url(${import.meta.env.BASE_URL}logo.png)`
+  return (
+    <span
+      role="img"
+      aria-label="Sri Ganapathy logo"
+      className={`inline-block shrink-0 transition-transform duration-700 ease-lux group-hover:scale-110 ${light ? 'bg-ivory' : 'bg-plum'} ${className}`}
+      style={{
+        WebkitMaskImage: url,
+        maskImage: url,
+        WebkitMaskSize: 'contain',
+        maskSize: 'contain',
+        WebkitMaskRepeat: 'no-repeat',
+        maskRepeat: 'no-repeat',
+        WebkitMaskPosition: 'center',
+        maskPosition: 'center',
+        maskMode: 'luminance',
+      }}
+    />
+  )
+}
+
 /** Mark + wordmark, for the nav and footer. `light` is for the purple panels. */
 export function Logo({ light = false, className = '' }: { light?: boolean; className?: string }) {
   return (
     <span className={`group inline-flex items-center gap-2.5 whitespace-nowrap sm:gap-3 ${className}`}>
-      <PinwheelMark size={42} spin className="h-[34px] w-[34px] sm:h-[40px] sm:w-[40px]" />
+      <LogoMark light={light} className="h-[38px] w-[38px] sm:h-[46px] sm:w-[46px]" />
       <span className="leading-none">
         <span className={`block font-display text-[1.32rem] font-semibold italic tracking-tight sm:text-[1.5rem] ${light ? 'text-ivory' : 'text-plum'}`}>
           Sri Ganapathy

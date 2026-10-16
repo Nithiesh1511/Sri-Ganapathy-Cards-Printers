@@ -8,6 +8,7 @@ import PrintingPress from './components/PrintingPress'
 import ProductCustomizer from './components/ProductCustomizer'
 import Craftsmanship from './components/Craftsmanship'
 import BrandStory from './components/BrandStory'
+import WhyChooseUs from './components/WhyChooseUs'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import CallBar from './components/CallBar'
@@ -29,6 +30,7 @@ export default function App() {
         <ProductCustomizer />
         <Craftsmanship />
         <BrandStory />
+        <WhyChooseUs />
         <ContactSection />
       </main>
       <Footer />

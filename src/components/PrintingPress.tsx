@@ -109,7 +109,7 @@ export default function PrintingPress() {
   return (
     <section id="craft" ref={sectionRef} aria-labelledby="craft-title" className={`relative bg-gradient-to-b from-ivory via-ivory-2 to-ivory ${reduced ? 'section' : 'h-[320vh]'}`}>
       <div ref={stageRef} className={`${reduced ? 'relative min-h-[48rem]' : 'sticky top-0 h-[100svh]'} overflow-hidden`} style={reduced ? finalVars : undefined}>
-        <div className="wrap relative z-10 pt-24 sm:pt-28">
+        <div className="wrap relative z-10 pt-20 sm:pt-24">
           <p className="eyebrow">Our craft</p>
           <h2 id="craft-title" className="h-section mt-4 max-w-[40rem]">
             Paper in. <span className="italic text-violet">Beautiful print out.</span>

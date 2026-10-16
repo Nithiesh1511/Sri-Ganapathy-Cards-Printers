@@ -116,7 +116,7 @@ function ServiceDialog({ id, onClose }: { id: GalleryId | null; onClose: () => v
 export default function ServiceGallery() {
   const [open, setOpen] = useState<GalleryId | null>(null)
   return (
-    <section id="services" aria-labelledby="services-title" className="section relative bg-ivory">
+    <section id="services" aria-labelledby="services-title" className="section relative bg-ivory !pt-10 sm:!pt-14 !pb-12 sm:!pb-16">
       <div className="wrap">
         <div className="grid items-end gap-8 lg:grid-cols-[1.2fr_1fr]">
           <div className="reveal">
