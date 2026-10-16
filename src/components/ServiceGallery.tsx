@@ -4,6 +4,7 @@ import { serviceMessage, whatsappUrl } from '@/utils/whatsapp'
 import { prefillEnquiry } from '@/utils/enquiry'
 import { VISUALS, VISUAL_BG } from './ServiceVisuals'
 import { Arrow, Close, WhatsApp } from './Icons'
+import { canHover } from '@/lib/hooks'
 
 /** Column spans for the editorial grid: wide/narrow pairs that alternate each row. */
 const SPAN = ['lg:col-span-7', 'lg:col-span-5 lg:mt-20', 'lg:col-span-5', 'lg:col-span-7 lg:mt-20']
@@ -11,6 +12,8 @@ const SPAN = ['lg:col-span-7', 'lg:col-span-5 lg:mt-20', 'lg:col-span-5', 'lg:co
 function ServiceCard({ item, index, onOpen }: { item: GalleryItem; index: number; onOpen: (id: GalleryId) => void }) {
   const Visual = VISUALS[item.id]
   const wide = SPAN[index % 4].includes('col-span-7')
+  // Touch screens have no hover, so the cue becomes a tap for the details dialog.
+  const hint = canHover() ? item.hint : 'Tap for details'
   return (
     <article className={`svc reveal group ${SPAN[index % 4]}`} style={{ '--d': `${(index % 2) * 120}ms` } as React.CSSProperties}>
       <button
@@ -23,7 +26,7 @@ function ServiceCard({ item, index, onOpen }: { item: GalleryItem; index: number
         <span className="grain absolute inset-0 rounded-[inherit]" aria-hidden />
         <Visual />
         <span className="absolute bottom-4 left-4 z-10 inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1.5 text-[0.72rem] font-semibold text-ink-soft backdrop-blur transition-opacity duration-500 group-hover:opacity-0">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet motion-reduce:animate-none" /> {item.hint}
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet motion-reduce:animate-none" /> {hint}
         </span>
       </button>
       <div className="mt-6 flex items-start gap-5 px-1">
@@ -126,7 +129,7 @@ export default function ServiceGallery() {
             </h2>
           </div>
           <p className="lede reveal lg:justify-self-end" style={{ '--d': '120ms' } as React.CSSProperties}>
-            Business stationery, invitations, binding, calendars and diaries — all under one roof. Hover a piece to see it move; open it for the details.
+            Business stationery, invitations, binding, calendars and diaries — all under one roof. {canHover() ? 'Hover a piece to see it move; open it for the details.' : 'Tap a piece to open its details.'}
           </p>
         </div>
 

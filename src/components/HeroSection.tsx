@@ -58,7 +58,7 @@ export default function HeroSection() {
             <p className="lede rise mt-7 md:max-lg:mx-auto" style={d(380)}>
               From memorable invitations to premium business stationery, we turn your ideas into exceptional print experiences.
             </p>
-            <div className="rise mt-9 flex flex-wrap gap-3 md:max-lg:justify-center" style={d(520)}>
+            <div className="rise mt-9 grid gap-3 sm:flex sm:flex-wrap md:max-lg:justify-center" style={d(520)}>
               <a href="#services" className="btn btn-primary">
                 Explore Our Craft <Arrow width={18} />
               </a>
@@ -67,7 +67,7 @@ export default function HeroSection() {
           </div>
 
           {!use3D && (
-            <CardStackCSS className="rise mx-auto mt-6 h-[min(80vw,22rem)] w-full max-w-[28rem] md:absolute md:bottom-[6%] md:left-1/2 md:mt-0 md:h-[24rem] md:w-[32rem] md:max-w-none md:-translate-x-1/2 lg:bottom-auto lg:left-auto lg:right-10 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0" />
+            <CardStackCSS className="rise mx-auto mt-6 h-[min(92vw,24rem)] w-full max-w-[30rem] scale-[1.12] sm:scale-100 md:absolute md:bottom-[6%] md:left-1/2 md:mt-0 md:h-[24rem] md:w-[32rem] md:max-w-none md:-translate-x-1/2 lg:bottom-auto lg:left-auto lg:right-10 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0" />
           )}
 
           {use3D && (
